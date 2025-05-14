@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrito de Compras</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="/">FERREMAS</a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="/productos">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/carrito">Carrito</a></li>
+          <li class="nav-item"><a class="nav-link" href="/estado-pedido">Estado Pedido</a></li>
+          <li class="nav-item position-relative">
+            <a class="nav-link" href="#" onclick="toggleCarritoNavbar()">
+              <img src="/img/carrito-logo.jpg" alt="Carrito" style="width: 30px;">
+              <span id="contador-carrito" class="badge bg-danger">0</span>
+            </a>
+          <li class="nav-item">
+            <button id="botonLoginLogout" class="btn btn-naranjo w-40">Cargando...</button>
+          </li>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENIDO -->
+  <div class="container mt-4">
+    <h1 class="mb-4">Carrito de Compras</h1>
+
+    <div th:if="${carrito != null and !carrito.isEmpty()}" class="row">
+      
+      <!-- Columna Izquierda: Productos -->
+      <div class="col-md-8 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Productos en el carrito</h5>
+            <table class="table table-hover align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>Imagen</th>
+                  <th>Producto</th>
+                  <th>Precio Unitario</th>
+                  <th>Cantidad</th>
+                  <th>Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="item : ${carrito}" th:attr="data-id=${item.id}">
+                  <td>
+                    <img th:src="@{'/img/' + ${item.imagen}}" alt="Imagen" width="60" height="60" class="imagen-prodcarrito">
+                  </td>
+                  <td th:text="${item.nombre}">Nombre</td>
+                  <td>$<span th:text="${item.precio}">0</span></td>
+                  <td th:text="${item.cantidad}">1</td>
+                  <td>
+                    <form th:action="@{/carrito/eliminar}" method="post">
+                      <input type="hidden" name="id" th:value="${item.id}" />
+                      <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                    </form>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna Derecha: Resumen -->
+      <div class="col-md-4">
+        <div class="card shadow-sm bg-light">
+          <div class="card-body">
+            <h5 class="card-title">Resumen del Pedido</h5>
+            <ul class="list-group mb-3">
+              <li class="list-group-item d-flex justify-content-between align-items-center"
+                  th:each="item : ${carrito}">
+                <span th:text="${item.nombre}">Producto</span>
+                <span>$<span th:text="${item.precio * item.cantidad}">0</span></span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between">
+                <strong>Total:</strong>
+                <strong>$<span id="total-general" th:text="${total}">0</span></strong>
+              </li>
+            </ul>
+            <a href="/datos-entrega" id="finalizar-compra" class="btn btn-success w-100">Finalizar Compra</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div th:if="${carrito == null or carrito.isEmpty()}">
+      <div class="alert alert-warning text-center">
+        <p class="mb-3">Tu carrito está vacío.</p>
+        <a href="/productos" type="submit" class="btn btn-naranjo w-35">Explorar Productos</a>
+      </div>
+    </div>
+
+  <!-- FOOTER -->
+  <footer class="footer mt-5 py-3 bg-light text-center">
+    © 2025 FERREMAS. Todos los derechos reservados.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/carrito.js"></script>
+  <script src="/js/usuario.js"></script>
+  <script src="/js/sesion.js"></script>
+</body>
+</html>

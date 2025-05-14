@@ -1,0 +1,195 @@
+:root {
+  --naranjo: #F57C00;
+  --naranjo-hover: #E64A19;
+  --negro: #212121;
+  --gris-texto: #424242;
+  --gris-claro: #F5F5F5;
+  --blanco: #ffffff;
+  --sombra: rgba(0, 0, 0, 0.1);
+}
+
+body {
+  background-color: var(--gris-claro);
+  color: var(--gris-texto);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* NAVBAR */
+.navbar {
+  background-color: var(--naranjo);
+  padding: 0.8rem 1rem;
+}
+
+.navbar-brand,
+.nav-link {
+  color: var(--blanco) !important;
+  font-weight: 600;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-link:hover,
+.navbar-brand:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+
+/* HERO */
+.hero {
+  background-color: var(--negro);
+  color: var(--blanco);
+  text-align: center;
+  padding: 5rem 1rem;
+  border-radius: 0.3em;
+  background-size: cover;
+  background-position: center;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+/* BOTONES */
+.btn-naranjo {
+  background-color: var(--naranjo);
+  color: var(--blanco);
+  border: 2px solid #fff;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  transition: background-color 0.3s ease;
+}
+
+.btn-naranjo:hover {
+  background-color: var(--blanco);
+  color: var(--naranjo);
+  border-color: var(--naranjo);
+}
+
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  margin-top: 4rem;
+  padding: 1.5rem 0;
+  background-color: #eeeeee;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* TABLAS */
+.table thead {
+  background-color: var(--naranjo);
+  color: var(--blanco);
+}
+
+.table tbody tr:hover {
+  background-color: #ffe0b2;
+}
+
+/* CARDS DE PRODUCTOS */
+.card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px var(--sombra);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px var(--sombra);
+}
+
+.card-title {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* SUBNAVBAR CATEGORÍAS */
+.subnavbar-categorias .btn-outline-secondary {
+  background-color: var(--naranjo); 
+  color: var(--blanco);             
+  border: 2px solid var(--blanco);  
+  padding: 0.5rem 1.2rem;
+  margin: 0 0.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+}
+
+.subnavbar-categorias .btn-outline-secondary:hover,
+.subnavbar-categorias .btn-outline-secondary:focus {
+  background-color: var(--blanco); 
+  color: var(--naranjo);            
+  border-color: var(--naranjo);
+  box-shadow: 0 0 12px var(--naranjo);
+  text-shadow: none;
+  outline: none;
+}
+
+
+.subnav-link {
+  margin: 0 1rem;
+  font-weight: 500;
+  color: var(--naranjo);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.subnav-link:hover {
+  color: var(--naranjo-hover);
+  text-decoration: underline;
+}
+
+/* FORMULARIOS */
+input.form-control {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+}
+
+input.form-control:focus {
+  border-color: var(--naranjo);
+  box-shadow: 0 0 0 0.2rem rgba(245, 124, 0, 0.25);
+  outline: none;
+}
+
+/* ALERTAS */
+.alert-success {
+  border-radius: 12px;
+  padding: 2rem;
+  font-size: 1.1rem;
+}
+
+/* IMÁGENES DESTACADAS */
+img.img-fluid {
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px var(--sombra);
+}
+
+/* NUEVA CLASE PARA IMÁGENES DE PRODUCTOS */
+.imagen-producto {
+  width: 100%;             
+  height: 200px;           
+  object-fit: contain;     
+  border-radius: 12px;     
+  box-shadow: 0 4px 8px var(--sombra); 
+  background-color: #fff;  
+  display: block;          
+  margin-bottom: 1rem;     
+}
+
+.imagen-prodcarrito {
+  width: 59px;
+  height: 59px;
+}
+
+/* UTILIDADES */
+.text-center {
+  text-align: center !important;
+}
+
+.text-end {
+  text-align: end !important;
+}
