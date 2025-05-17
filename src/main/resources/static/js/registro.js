@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
       mostrarMensaje("Registro exitoso. Sesión iniciada automáticamente.", "success");
 
       setTimeout(() => {
-        window.location.href = "/";
+        window.location.href = "/login";
       }, 2000);
     } catch (error) {
       console.error("Error en el registro:", error);
