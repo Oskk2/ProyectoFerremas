@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Finalizar Pago - FERREMAS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: var(--naranjo);">
+    <div class="container">
+      <a class="navbar-brand text-white" href="/">FERREMAS</a>
+    </div>
+  </nav>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6 text-center">
+
+        <h2 class="mb-3">Resumen de tu compra</h2>
+        <div class="card mb-4 text-start">
+          <div class="card-body">
+            <p><strong>Número de Orden:</strong> <span id="numero-orden">—</span></p>
+            <p><strong>Nombre del comercio:</strong> FERREMAS</p>
+            <p><strong>Monto:</strong> <span id="total-compra">—</span> CLP</p>
+            <p><strong>Descripción:</strong> <span id="descripcion">Herramientas FERREMAS</span></p>
+            <p><strong>Método:</strong> <span id="mostrar-metodo">—</span></p>
+
+            <div id="info-domicilio" style="display: none;">
+              <p><strong>Dirección:</strong> <span id="mostrar-direccion">—</span></p>
+              <p><strong>Comuna:</strong> <span id="mostrar-comuna">—</span></p>
+              <p><strong>Teléfono:</strong> <span id="mostrar-telefono">—</span></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conversión de moneda -->
+        <div class="mb-4 text-start">
+          <label for="moneda" class="form-label">Convertir a:</label>
+          <select id="moneda" class="form-select d-inline w-auto">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="CLP">CLP</option>
+          </select>
+          <button id="btn-convertir" class="btn btn-outline-primary btn-sm ms-2">Convertir</button>
+          <div id="resultado-conversion" class="mt-2 fw-bold"></div>
+        </div>
+        
+        <!-- Botón de pago Webpay -->
+        <a id="btn-pagar" href="/pago-simulado" class="btn btn-success btn-sm w-100 mb-5" style="padding: 0.25rem 0.5rem; display: flex; align-items: center; justify-content: center;">
+          <img src="/img/webpay-logo.png" alt="Webpay" style="height: 50px; margin-right: 10px; object-fit: contain;">
+          Pagar con Webpay
+        </a>
+        
+        <div class="d-grid gap-2 col-12 mx-auto mt-2">
+          <a href="/" class="btn btn-secondary">Volver al Inicio</a>
+        </div>
+
+        <!-- Señales de confianza -->
+        <div class="mt-4">
+          <img src="/img/check.png" alt="Sitio seguro" style="height: 32px;">
+          <span class="ms-2 text-muted">Transacción protegida y segura</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer bg-light py-3 text-center">
+    © 2025 FERREMAS. Todos los derechos reservados.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/confirmar-pago.js"></script>
+
+</body>
+</html>

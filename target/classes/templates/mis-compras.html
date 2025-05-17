@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mis Compras - FERREMAS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/estilos.css" />
+</head>
+<body>
+<!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="/">FERREMAS</a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="/productos">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link" href="/carrito">Carrito</a></li>
+          <li class="nav-item"><a class="nav-link" href="/mis-compras">Mis Compras</a></li>
+          <li class="nav-item position-relative">
+            <a class="nav-link" href="#" onclick="toggleCarritoNavbar()">
+              <img src="/img/carrito-logo.jpg" alt="Carrito" style="width: 30px;">
+              <span id="contador-carrito" class="badge bg-danger">0</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <button id="botonLoginLogout" class="btn btn-naranjo w-40">Cargando...</button>
+          </li>
+          <li class="nav-item">
+            <span id="nombreUsuario" class="nav-link fw-bold text-success"></span>
+          </li>
+          <li class="nav-item">
+            <button id="cerrarSesion" class="btn btn-sm btn-outline-danger ms-2 d-none">Cerrar sesión</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-4">
+    <h2 class="mb-4 text-center">Mis Compras</h2>
+    <div id="lista-pedidos" class="row g-4"></div>
+  </div>
+
+<!-- FOOTER -->
+  <footer class="footer">
+    © 2025 FERREMAS. Todos los derechos reservados.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/mis-compras.js"></script>
+  <script src="/js/carrito.js"></script>
+  <script src="/js/usuario.js"></script>
+  <script src="/js/sesion.js"></script>
+</body>
+</html>

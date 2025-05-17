@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi Perfil - FERREMAS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="/">FERREMAS</a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="/productos">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link" href="/carrito">Carrito</a></li>
+          <li class="nav-item">
+            <button id="botonLoginLogout" class="btn btn-naranjo">Cargando...</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENIDO DEL PERFIL -->
+    <main class="container my-5 bg-white p-4 rounded-4 shadow-lg animate__animated animate__fadeIn">
+    <div class="text-center mb-4">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Avatar" width="90" class="mb-3 rounded-circle border border-3 border-warning shadow-sm">
+        <h2 class="fw-bold text-naranjo">Mi Perfil</h2>
+        <hr class="w-25 mx-auto border-3 border-naranjo opacity-75">
+    </div>
+    
+    <div id="datos-usuario" class="mb-4 row justify-content-center">
+        <div class="col-md-6">
+        <div class="card border-0 shadow-sm bg-light mb-3">
+            <div class="card-body">
+            <p class="mb-2"><strong>Nombre:</strong> <span id="nombre-usuario" class="fw-bold text-success"></span></p>
+            <p class="mb-0"><strong>Correo:</strong> <span id="correo-usuario" class="fw-bold text-success"></span></p>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header text-white fw-semibold" style="background-color: var(--naranjo);">
+            <i class="bi bi-lock-fill me-2"></i> Cambiar Contraseña
+            </div>
+            <div class="card-body">
+            <a href="/recuperar" class="btn btn-naranjo w-40 mt-3">Verificacion en 2 pasos 2FA</a>
+            <div id="msg-pass" class="mt-3 fw-semibold text-danger"></div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </main>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    © 2025 FERREMAS. Todos los derechos reservados.
+  </footer>
+
+  <script src="/js/perfil.js"></script>
+  <script src="/js/sesion.js"></script>
+</body>
+</html>
