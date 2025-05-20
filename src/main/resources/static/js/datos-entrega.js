@@ -1,4 +1,4 @@
-// Mostrar/ocultar campos de dirección según método de entrega
+
 const metodoEntrega = document.getElementById('metodo-entrega');
 const direccionFields = document.getElementById('direccion-fields');
 const direccionInput = document.getElementById('direccion');
@@ -22,7 +22,6 @@ metodoEntrega.addEventListener('change', () => {
   }
 });
 
-// Validación Bootstrap personalizada
 (() => {
   'use strict'
   const form = document.getElementById('form-entrega');
@@ -31,7 +30,6 @@ metodoEntrega.addEventListener('change', () => {
       event.preventDefault()
       event.stopPropagation()
     }
-    // Agregar al localstorage
     localStorage.setItem("metodoEntrega", metodoEntrega.value);
     localStorage.setItem("direccion", direccionInput.value);
     localStorage.setItem("comuna", comunaInput.value);

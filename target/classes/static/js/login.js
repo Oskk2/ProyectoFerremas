@@ -8,13 +8,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
 
-    // Validar campos vacíos
     if (!email || !password) {
       mostrarMensaje("Por favor completa todos los campos.", "danger");
       return;
     }
 
-    // Validar formato email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       mostrarMensaje("Por favor ingresa un correo válido.", "danger");
@@ -41,10 +39,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const usuario = await response.json();
 
-      // Guardar usuario en localStorage
       localStorage.setItem("usuario", JSON.stringify(usuario));
 
-      // Cargar carrito asociado si existe
       const carritoGuardado = localStorage.getItem(`carrito_${usuario.email}`);
       if (carritoGuardado) {
         console.log("Carrito local cargado para:", usuario.email);

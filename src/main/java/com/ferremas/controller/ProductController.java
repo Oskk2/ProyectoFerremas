@@ -1,5 +1,10 @@
 package com.ferremas.controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -13,7 +18,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ferremas.model.Product;
 import com.ferremas.model.Usuario;
@@ -69,4 +76,21 @@ public class ProductController {
     public Product obtenerPorId(@PathVariable Long id) {
         return productService.getProductoById(id);
     }
+
+    
+    @PostMapping("/subirImagen")
+    public ResponseEntity<?> subirImagen(@RequestParam("imagen") MultipartFile imagen) {
+        try {
+            String nombreArchivo = imagen.getOriginalFilename();
+            Path ruta = Paths.get("src/main/resources/static/img/" + nombreArchivo);
+            Files.copy(imagen.getInputStream(), ruta, StandardCopyOption.REPLACE_EXISTING);
+            return ResponseEntity.ok(nombreArchivo);
+        } catch (IOException | IllegalStateException e) {
+            System.err.println("Error al guardar la imagen: " + e.getMessage());
+            return ResponseEntity.status(500).body("Error al guardar la imagen");
+        }
+    }
+
+
+
 }

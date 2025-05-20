@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const confirmFeedback = document.getElementById("confirmFeedback");
   const mensajeDiv = document.getElementById("mensaje");
 
-  // Actualizar barra de fuerza en tiempo real
   passwordInput.addEventListener("input", () => {
     const value = passwordInput.value;
     let strength = 0;
@@ -35,7 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Validar que las contraseñas coincidan al tipear
   confirmInput.addEventListener("input", () => {
     if (confirmInput.value !== passwordInput.value) {
       confirmInput.classList.add("is-invalid");
@@ -54,14 +52,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const password = passwordInput.value;
     const confirmPassword = confirmInput.value;
 
-    // Validación de formato email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       mostrarMensaje("Por favor ingresa un correo válido.", "danger");
       return;
     }
 
-    // Validaciones básicas
     if (!nombre) {
       mostrarMensaje("El nombre es obligatorio", "danger");
       return;
@@ -103,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Guardar sesión
       localStorage.setItem("usuario", JSON.stringify(userData));
-      mostrarMensaje("Registro exitoso. Sesión iniciada automáticamente.", "success");
+      mostrarMensaje("Registro exitoso. Redirigiendo al login...", "success");
 
       setTimeout(() => {
         window.location.href = "/login";

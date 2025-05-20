@@ -56,8 +56,10 @@
           <input type="text" id="categoria" class="form-control" placeholder="Categoría" required>
         </div>
         <div class="col-12">
-          <input type="text" id="imagen" class="form-control" placeholder="Imagen (ej: taladro.jpg)" required>
+          <label for="fileImagen" class="form-label">Seleccionar Imagen</label>
+          <input type="file" id="fileImagen" class="form-control" accept="image/*">
         </div>
+        <input type="hidden" id="imagen">
         <div class="col-12">
           <button type="submit" class="btn btn-primary">Guardar Producto</button>
         </div>

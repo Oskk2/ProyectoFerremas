@@ -36,8 +36,6 @@ public class Usuario {
     @Column(name = "rol", nullable = false)
     private String rol;
 
-
-    // Getters y setters
     public Long getId() {
         return id;
     }

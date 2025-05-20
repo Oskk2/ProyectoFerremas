@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   const tabla = document.querySelector("#tabla-compras tbody");
-  const comprasGlobal = []; // Aquí guardamos todos los DTO
+  const comprasGlobal = []; 
 
   async function cargarCompras() {
     try {
       const res = await fetch("/pedidos/todos");
       if (!res.ok) throw new Error("Error al obtener las compras");
-      const compras = await res.json(); // Array de PedidoDTO
+      const compras = await res.json(); 
 
       tabla.innerHTML = "";
       comprasGlobal.length = 0;
@@ -47,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const usuario = pedido.usuario || {};
     const nombreUsuario = usuario.nombre_usuario || usuario.nombre || "-";
 
-    // Construimos el HTML del modal
     let html = `
       <p><strong>ID Compra:</strong> ${pedido.id_pedido || pedido.id}</p>
       <p><strong>Usuario:</strong> ${nombreUsuario} (ID: ${usuario.id || "-"})</p>
@@ -72,7 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     html += `</ul>`;
 
-    // Insertamos en el cuerpo del modal
     document.getElementById("contenidoDetalleCompra").innerHTML = html;
 
     // Mostramos el modal

@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const usuario = JSON.parse(localStorage.getItem("usuario"));
   if (!usuario || !usuario.id) {
     alert("Debes iniciar sesión para ver tus compras.");
-    window.location.href = "/login.html";
+    window.location.href = "/login";
     return;
   }
 

@@ -16,13 +16,12 @@ function cargarCarritoLocal() {
   return data ? JSON.parse(data) : [];
 }
 
-// Mostrar/Ocultar el navbar lateral del carrito
 function toggleCarritoNavbar() {
   const carrito = document.getElementById("miniCarrito");
   carrito.style.display = carrito.style.display === "none" ? "block" : "none";
 }
 
-// Eliminar producto del carrito desde el mini carrito
+
 async function eliminarProducto(id) {
   try {
     const formData = new URLSearchParams();
@@ -67,10 +66,8 @@ async function modificarCantidad(id, cambio) {
 
     const data = await res.json();
 
-    // Actualiza mini carrito
     actualizarCarrito();
 
-    // Actualiza carrito principal (si existe en DOM)
     const cantidadSpan = document.getElementById(`cantidad-${id}`);
     const subtotalSpan = document.getElementById(`subtotal-${id}`);
     const totalGeneralSpan = document.getElementById("total-general");
@@ -146,7 +143,7 @@ async function actualizarCarrito() {
     const localData = cargarCarritoLocal();
     if (localData.length > 0) {
       console.log("Cargando carrito desde localStorage");
-      // puedes usar aquí renderizarCarrito(localData) si prefieres
+
     }
   }
 }

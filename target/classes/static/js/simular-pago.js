@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  emailjs.init("9uvfTn0qfylIv73Sj");
   const total = localStorage.getItem("totalCompra") || 0;
   const numeroOrden = localStorage.getItem("numeroOrden") || "---";
   const moneda = localStorage.getItem("moneda") || "CLP";
@@ -88,8 +89,9 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(async () => {
       loading.style.display = "none";
       await crearPedidoDespuesDePago(); 
+      document.getElementById("correo-confirmado").textContent = document.getElementById("email-destino").value;
       modal.show();
-    }, 2000);
+    }, 400);
 
   });
 
@@ -132,8 +134,65 @@ async function crearPedidoDespuesDePago() {
 
   if (response.ok) {
     console.log("Pedido creado con éxito.");
+    await enviarComprobanteEmail(usuario, carrito, total, localStorage.getItem("numeroOrden"));
+
   } else {
     console.error("Error al crear el pedido.");
     alert("Error al registrar el pedido. Intente nuevamente.");
   }
+
 }
+
+const SERVICE_ID = "service_4vmlvu8"; 
+const TEMPLATE_ID = "template_ki0yali"; 
+
+async function enviarComprobanteEmail(usuario, carrito, total, numeroOrden) {
+  const emailDestino = document.getElementById("email-destino").value;
+
+  if (!emailDestino) {
+    alert("Por favor ingresa un correo para enviar el comprobante.");
+    return;
+  }
+
+  const listaHTML = carrito.map(item => `
+    <tr>
+      <td style="padding:8px;border:1px solid #ccc;">${item.nombre}</td>
+      <td style="padding:8px;border:1px solid #ccc;">${item.cantidad}</td>
+      <td style="padding:8px;border:1px solid #ccc;">$${(item.precio * item.cantidad).toLocaleString("es-CL")}</td>
+    </tr>
+  `).join("");
+
+  const tablaHTML = `
+    <table style="width:100%;border-collapse:collapse;">
+      <thead>
+        <tr>
+          <th style="padding:8px;border:1px solid #ccc;">Producto</th>
+          <th style="padding:8px;border:1px solid #ccc;">Cantidad</th>
+          <th style="padding:8px;border:1px solid #ccc;">Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${listaHTML}
+      </tbody>
+    </table>
+  `;
+
+  const templateParams = {
+    to_email: emailDestino,
+    to_name: usuario.nombre,
+    order_id: numeroOrden,
+    totalFinal: total.toLocaleString("es-CL"),
+    orders: tablaHTML,
+    logo: "FERREMAS"
+  };
+
+  try {
+    const response = await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams);
+    console.log("Correo enviado con éxito:", response.status, response.text);
+  } catch (error) {
+    console.error("Error al enviar el correo:", error);
+  }
+}
+
+
+

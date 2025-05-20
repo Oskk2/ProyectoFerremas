@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const strengthBar = document.getElementById("passwordStrength");
   const confirmFeedback = document.getElementById("confirmFeedback");
 
-  // Actualiza barra de fuerza en tiempo real
   nuevaInput.addEventListener("input", () => {
     const value = nuevaInput.value;
     let strength = 0;
@@ -34,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Validar que las contraseñas coincidan al tipear en confirmar
   confirmarInput.addEventListener("input", () => {
     if (confirmarInput.value !== nuevaInput.value) {
       confirmarInput.classList.add("is-invalid");
@@ -51,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const confirmar = confirmarInput.value;
     const email = sessionStorage.getItem("correoRecuperacion");
 
-    // Validar campos vacíos y requisitos mínimos
     if (!nueva) {
       mostrarMensaje("La contraseña no puede estar vacía", "danger");
       return;

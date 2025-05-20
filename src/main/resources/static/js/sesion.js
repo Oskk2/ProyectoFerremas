@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
       window.location.href = "/";
     };
 
-    // Agregar botón "Mi Perfil"
     const nav = document.querySelector(".navbar-nav");
     const cerrarSesionBtn = document.getElementById("cerrarSesion");
     if (nav && cerrarSesionBtn) {
@@ -26,11 +25,9 @@ document.addEventListener("DOMContentLoaded", function () {
       perfilBtn.className = "nav-item";
       perfilBtn.innerHTML = `<a class="nav-link btn btn-outline-success ms-2" href="/perfil">Mi Perfil</a>`;
 
-      // Insertar después del botón "Cerrar sesión"
       cerrarSesionBtn.parentElement.insertAdjacentElement("afterend", perfilBtn);
     }
 
-    // Botón "Panel Admin"
     if (usuario.rol === "admin") {
       const adminBtn = document.createElement("li");
       adminBtn.className = "nav-item";

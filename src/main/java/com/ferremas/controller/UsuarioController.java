@@ -118,12 +118,10 @@ public class UsuarioController {
         String actual = datos.get("actual");
         String nueva = datos.get("nueva");
 
-        // Comprobación usando BCrypt
         if (!passwordEncoder.matches(actual, usuario.getPassword())) {
             return ResponseEntity.badRequest().body("Contraseña actual incorrecta");
         }
 
-        // Guardar nueva contraseña cifrada
         usuario.setPassword(passwordEncoder.encode(nueva));
         usuarioRepository.save(usuario);
         return ResponseEntity.ok("Contraseña actualizada correctamente");

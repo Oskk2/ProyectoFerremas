@@ -35,6 +35,29 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
 
     const id = document.getElementById("producto-id").value;
+    const fileInput = document.getElementById("fileImagen");
+    const imagenInput = document.getElementById("imagen");
+
+    if (fileInput.files.length > 0) {
+      const formData = new FormData();
+      formData.append("imagen", fileInput.files[0]); 
+
+      try {
+        const res = await fetch("/api/productos/subirImagen", {
+          method: "POST",
+          body: formData
+        });
+
+        if (!res.ok) throw new Error("Error al subir imagen");
+        const nombreImagen = await res.text();
+        imagenInput.value = nombreImagen;
+      } catch (err) {
+        alert("Error al subir la imagen.");
+        console.error(err);
+        return;
+      }
+    }
+
     const producto = {
       nombre: document.getElementById("nombre").value.trim(),
       marca: document.getElementById("marca").value.trim(),
@@ -42,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
       precio: parseFloat(document.getElementById("precio").value),
       stock: parseInt(document.getElementById("stock").value),
       categoria: document.getElementById("categoria").value.trim(),
-      imagen: document.getElementById("imagen").value.trim()
+      imagen: imagenInput.value.trim()
     };
 
     if (!producto.nombre || isNaN(producto.precio) || isNaN(producto.stock)) {

@@ -114,7 +114,6 @@ public class CarritoWebController {
             return new ArrayList<>();
         }
 
-        // Enriquecer con datos del producto como la imagen
         List<Map<String, Object>> carritoConImagen = new ArrayList<>();
         for (Map<String, Object> item : carrito) {
             Long id = (Long) item.get("id");
@@ -167,7 +166,6 @@ public class CarritoWebController {
             }
         }
 
-        // Calcular total del carrito
         totalGlobal = carrito.stream()
                 .mapToDouble(item -> ((Number) item.get("precio")).doubleValue() * (int) item.get("cantidad"))
                 .sum();

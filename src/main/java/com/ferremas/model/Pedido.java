@@ -30,7 +30,6 @@ public class Pedido {
     @Column(nullable = false)
     private BigDecimal total;
 
-    // Getters y Setters
 
     public Long getId() {
         return id;

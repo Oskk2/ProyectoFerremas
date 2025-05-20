@@ -34,7 +34,6 @@ public class DetallePedido {
     @Column(name = "precio_unitario", nullable = false)
     private BigDecimal precioUnitario;
 
-    // Getters y Setters
 
     public Long getIdDetalle() {
         return idDetalle;

@@ -48,7 +48,6 @@ public class UsuarioService {
         if (existente != null) {
             existente.setNombre(usuarioNuevo.getNombre());
             existente.setEmail(usuarioNuevo.getEmail());
-            // No cambiar contraseña directamente por seguridad
             return usuarioRepository.save(existente);
         }
         return null;
